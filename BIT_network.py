@@ -19,7 +19,6 @@ user_file = user_path + '\\BIT_info'            # The file including username an
 
 if os.path.exists(user_path) == False:
     os.mkdir(user_path)
-
 if os.path.exists(user_file):
     with open(user_file, 'rt') as fd:
         user_info = fd.readlines()
@@ -31,6 +30,12 @@ else:
     with open(user_file, 'wt') as fd:
         fd.write(u_name+'\n')
         fd.write(u_pwd+'\n')
+
+
+url_init = 'http://10.0.0.55'
+url_web = url_init + ':' + str(web_port)
+url_login = url_web + '/include/auth_action.php'
+url_logout = url_web + '/srun_portal_pc_succeed.php'
 
 headers = {
     "Accept": "*/*",
@@ -44,12 +49,6 @@ headers = {
     "X-Requested-With": "XMLHttpRequest",
 }
 
-url_init = 'http://10.0.0.55'
-url_web = url_init + ':' + str(web_port)
-
-url_login = url_web + '/include/auth_action.php'
-url_logout = url_web + '/srun_portal_pc_succeed.php'
-
 data = {
     'username': u_name,
     'password': u_pwd,
@@ -61,7 +60,6 @@ data = {
 
 s_BIT = requests.session()
 response_login = s_BIT.post(url_login, data=data, headers=headers)
-
 html = response_login.text.lower()
 
 if 'login_ok' in html:
@@ -85,4 +83,5 @@ elif 'Password is error' in response_login.text:
 else:
     print('Error occurs during connecting network...')
 print('>--**************************--<')
+
 input('\nTurn off the terminal by pressing <Enter> key...')
