@@ -6,16 +6,16 @@ import getpass
 import requests
 from bs4 import BeautifulSoup as BS
 
-web_port = random.randrange(801, 805, 1)
+web_port = random.randrange(801, 805, 1)        # The number of ports generated randomly: (801 ~ 804)
 
-def getFilePath(us_name):
+def getFilePath(us_name):                       # The working folder
     if platform.system() == 'Windows':
         File_Path = 'C:\\Users\\' + us_name + '\\AppData\\Local\\BIT_Network'
         return File_Path
 
 users = getpass.getuser()
 user_path = getFilePath(users)
-user_file = user_path + '\\BIT_info'
+user_file = user_path + '\\BIT_info'            # The file including username and password 
 
 if os.path.exists(user_path) == False:
     os.mkdir(user_path)
@@ -27,7 +27,7 @@ if os.path.exists(user_file):
         u_pwd = user_info[1][: -1]
 else:
     u_name = input('Please input your username: ')
-    u_pwd = input('Please input your password: ')
+    u_pwd = getpass.getpass('Please input your password: ')
     with open(user_file, 'wt') as fd:
         fd.write(u_name+'\n')
         fd.write(u_pwd+'\n')
