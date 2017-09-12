@@ -10,12 +10,12 @@ web_port = random.randrange(801, 805, 1)
 
 def getFilePath(us_name):
     if platform.system() == 'Windows':
-        File_Path = r'C:\Users\' + us_name + r'\AppData\Local\BIT_Network'
+        File_Path = 'C:\\Users\\' + us_name + '\\AppData\\Local\\BIT_Network'
         return File_Path
 
 users = getpass.getuser()
 user_path = getFilePath(users)
-user_file = user_path + r'\BIT_info'
+user_file = user_path + '\\BIT_info'
 
 if os.path.exists(user_path) == False:
     os.mkdir(user_path)
