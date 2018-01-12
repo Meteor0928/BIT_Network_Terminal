@@ -6,7 +6,7 @@ import getpass
 import requests
 from bs4 import BeautifulSoup as BS
 
-web_port = random.randrange(801, 805, 1)        # The number of ports generated randomly: (801 ~ 804)
+#web_port = random.randrange(801, 805, 1)        # The number of ports generated randomly: (801 ~ 804)
 
 def getFilePath(us_name):                       # The working folder
     if platform.system() == 'Windows':
@@ -33,7 +33,8 @@ else:
 
 
 url_init = 'http://10.0.0.55'
-url_web = url_init + ':' + str(web_port)
+#url_web = url_init + ':' + str(web_port)
+url_web = url_init
 url_login = url_web + '/include/auth_action.php'
 url_logout = url_web + '/srun_portal_pc_succeed.php'
 
